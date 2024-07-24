@@ -1,14 +1,29 @@
 kind: project
 metadata:
   name: daticomuni
+  created: '2024-05-28T12:22:47.141000'
 spec:
-  functions: []
+  functions:
+  - url: src/convert-all.py
+    name: convert-all
+    kind: job
+    image: mlrun/mlrun
+    handler: convert_all
+  - url: src/convert-aziendali.py
+    name: convert-aziendali
+    kind: job
+    image: mlrun/mlrun
+    handler: convert_aziendali
+    requirements:
+    - openpyxl
   workflows: []
   artifacts: []
   conda: ''
-  source: ''
+  source: git://github.com/tn-aixpa/daticomuni.git#refs/heads/main
   desired_state: online
   build:
     commands: []
     requirements: []
   custom_packagers: []
+status:
+  state: online
